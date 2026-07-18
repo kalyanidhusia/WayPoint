@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run --exclude '**/evals.test.ts'",
-    "evals": "vitest run src/lib/waypoint/evals.test.ts"
+    "test": "vitest run --exclude '**/*evals.test.ts'",
+    "evals": "vitest run src/lib/waypoint/evals.test.ts src/lib/waypoint/companion-evals.test.ts"
   },
   "dependencies": {
     "lucide-react": "^1.25.0",

@@ -1,0 +1,6 @@
+import type { MentorRecord } from "./companion-types";
+export const companionMentors: MentorRecord[] = [
+  { id:"daniel", name:"Daniel Brooks", military:"Army 11B, former Staff Sergeant", role:"Site Safety Coordinator", location:"Little Rock, Arkansas", why:"Exact MOS transition and same target field", common:"Infantry leadership, risk controls, team briefings", topics:["Translating infantry experience","OSHA training","First safety role"], availability:"Two demo slots this month", synthetic:true },
+  { id:"alicia", name:"Alicia Grant", military:"Arkansas Army National Guard logistics", role:"Regional EHS Specialist", location:"North Little Rock, Arkansas", why:"Guard experience, industrial safety, Central Arkansas network", common:"Operational accountability and equipment-movement safety", topics:["Inspections","Incident reporting","EHS career development"], availability:"One demo slot next week", synthetic:true },
+  { id:"robert", name:"Robert Hayes", military:"Marine Corps operations", role:"Safety Hiring Manager", location:"Conway, Arkansas", why:"Hires entry-level safety coordinators and understands military experience", common:"Operations leadership and hiring-context translation", topics:["Résumé review","Interview preparation","Hiring expectations"], availability:"Demo office hours Fridays", synthetic:true },
+];

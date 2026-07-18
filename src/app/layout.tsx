@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./companion.css";
 
 export const metadata: Metadata = {
   title: "WayPoint | Redeploy your skills. Not your life.",

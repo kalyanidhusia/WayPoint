@@ -2,7 +2,9 @@
 
 > Redeploy your skills. Not your life.
 
-WayPoint is a military-to-civilian career-development and mentorship demonstration. It helps active-duty personnel, National Guard members, Reservists, and veterans translate transferable experience into civilian-recognized capabilities, explore career pathways, identify gaps, find demonstration learning options and mentors, and leave with a 30-day plan.
+WayPoint is a military-to-civilian career-development and mentorship demonstration. It stays with a member through a six-stage career companion loop: **Translate → Learn → Connect → Roadmap → Apply → Interview**.
+
+The flagship companion follows **Marcus Reed**, a clearly labeled synthetic Army 11B Sergeant in Little Rock with warehouse leadership experience and a Construction / Site Safety Coordinator target. Marcus, his stories, mentor requests, events, and application records are demonstration data.
 
 ## The problem
 
@@ -20,6 +22,38 @@ The Next.js App Router renders a server landing page and a focused client worksp
 - `agent.ts`: typed orchestration entry point
 
 This boundary allows a future LLM-backed implementation to augment or replace the local agent without coupling it to UI components.
+
+The companion adds a shared `CompanionState` model, schema-versioned local storage, curated course/mentor/employer/roadmap/interview data, deterministic readiness logic, and provenance-aware résumé, cover-letter, and STAR builders. The original landing page and Career Agent remain intact at `/`; the extended loop is at `/companion`.
+
+## Six-stage companion loop
+
+1. **Translate** — Review 12 evidence-backed construction-safety capabilities, the professional summary, advisory consultant note, and editable story bank.
+2. **Learn** — Track five demonstration training recommendations and their exact planning-point gains.
+3. **Connect** — Save local intro or referral requests for three synthetic Central Arkansas veteran mentors.
+4. **Roadmap** — Complete an eight-week, dependency-aware action plan.
+5. **Apply** — Edit truthful résumé and cover-letter drafts, review employer career pages, and confirm externally submitted applications.
+6. **Interview** — Break down requirements, build STAR responses only from confirmed stories, and manage a synthetic interview week.
+
+## Readiness planning indicator
+
+WayPoint profile readiness starts at **35%** for validated experience. It adds curated points for completed learning (up to 25), roadmap tasks (up to 16), an approved translated profile (5), résumé (5), cover letter (3), confirmed external applications (up to 6), network actions, and interview preparation (up to 4), capped at 100.
+
+It is explicitly a planning indicator—not an employer score, eligibility decision, credential, or hiring prediction.
+
+## Opportunity and application truthfulness
+
+- A **recommendation** is a WayPoint planning suggestion.
+- An **employer watchlist** links to an official employer career page but does not claim an exact opening.
+- A **verified-open** record requires a direct official job URL, a manual verification date, and `verifiedOpen: true`.
+- A **synthetic-demo** role exists only to demonstrate workflow.
+
+WayPoint never submits an application. “Open official application” opens the employer’s official site, and an application is tracked only after the member confirms they submitted it there.
+
+## Mentor and STAR provenance
+
+All companion mentors visibly say “Synthetic demonstration mentor.” Intro and referral requests are stored locally; no message is delivered. Production requires verified mentor identity, messaging, availability, consent, and referral workflows.
+
+STAR answers use only a matching story marked user-confirmed. Unconfirmed synthetic prompts are never presented as Marcus’s real experience. When no confirmed story matches, WayPoint shows a blank worksheet.
 
 ## Agent pipeline
 
@@ -43,7 +77,9 @@ The interface shows each analysis stage, evidence and confidence for every trans
 
 PDF, text, and image attachments remain in browser memory. Their name, type, and size are displayed, but automated extraction is not enabled and the agent never claims to have analyzed them. The demo uses no authentication, database, server upload, persistent storage, external API, or secrets. Do not enter classified, sensitive operational, medical, SSN, or DD-214 information.
 
-Course, eligibility, mentor, and occupation content is synthetic demonstration data. Course sources are explicit placeholders and must be verified before real-world use.
+Course, eligibility, mentor, occupation, story, and calendar content is synthetic demonstration data. Course and official career-page URLs are curated, but availability, pricing, jobs, and eligibility must be verified.
+
+Companion progress is stored under the schema-versioned key `waypoint-companion-v1` in `localStorage`. Stale versions fall back to a clean demo. “Reset WayPoint demo” deletes local progress and returns readiness to 35%. Attachments still remain browser-memory-only and are never added to local storage.
 
 ## Run locally
 
@@ -66,16 +102,17 @@ npm run evals
 npm run build
 ```
 
-`npm run evals` runs five fixed agent cases and prints a concise stability, evidence, reason, confidence, and top-match report.
+`npm run evals` runs the fixed Career Agent cases plus the complete companion journey and prints translation, course alignment, mentor explanation, roadmap, credential, application, STAR provenance, and readiness-bound summaries.
 
-## Three-minute demo script
+## Five-minute demo script
 
-1. **0:00–0:30** — Start on the landing page. Explain Translate, Develop, Connect, and Advance.
-2. **0:30–1:00** — Select the Army 11B synthetic profile. Point out the safety warning and add a small sample text attachment; note that it remains in browser memory and is not analyzed.
-3. **1:00–1:20** — Start the Career Agent and call out each visible analysis stage.
-4. **1:20–2:10** — Review the professional summary and evidence-backed skills. Approve one, edit one, and reject one. Show that infantry experience maps to broad operations/project pathways—not a security-only track.
-5. **2:10–2:40** — Open the top three pathways, skill gaps, demonstration courses, and synthetic mentors. Emphasize the reasons and match scores.
-6. **2:40–3:00** — Complete an item in the 30-day plan and close on member control, privacy, and the advisory notice.
+1. **0:00–0:40** — Open `/companion`; introduce synthetic member Marcus Reed, his safety target, 35% planning readiness, and persistent six-stage navigation.
+2. **0:40–1:30** — In Translate, review military and civilian evidence, edit a capability, approve the profile, and explain why this is a non-security pathway. Show that synthetic story prompts remain unconfirmed.
+3. **1:30–2:10** — In Learn, mark OSHA 30 in progress, clarify that it is Outreach Training rather than an OSHA certification, then complete one fundamentals course and watch readiness change.
+4. **2:10–2:45** — In Connect, request a synthetic mentor intro and demonstrate the specific-job/referral warning. Emphasize that requests are saved locally only.
+5. **2:45–3:25** — In Roadmap, complete tasks and add a note. Show current-week, progress, dependency, overdue, and readiness updates.
+6. **3:25–4:20** — In Apply, review training truthfulness in the generated résumé, tailor/copy the cover letter, open an official employer career page, and confirm an externally submitted application.
+7. **4:20–5:00** — In Interview, show the requirement breakdown, blank STAR worksheet, confirm a story in Translate, return to see a provenance-backed answer, and review the visibly synthetic Nabholz demo event.
 
 ## Production roadmap
 
