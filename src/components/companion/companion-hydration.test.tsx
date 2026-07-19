@@ -58,6 +58,21 @@ describe("companion hydration", () => {
     expect(getItem).not.toHaveBeenCalled();
   });
 
+  it("initial client rendering starts at 35 without reading localStorage", async () => {
+    const persisted = createPersistedState();
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(persisted));
+    const getItem = vi.spyOn(window.localStorage, "getItem");
+
+    render(<CompanionShell />);
+
+    expect(screen.getAllByText("35%").length).toBeGreaterThan(0);
+    expect(screen.getByText("Restoring progress…")).toBeTruthy();
+    expect(getItem).not.toHaveBeenCalled();
+
+    expect(await screen.findByText("57%")).toBeTruthy();
+    expect(getItem).toHaveBeenCalledOnce();
+  });
+
   it("restores persisted readiness in the header after mount", async () => {
     const persisted = createPersistedState();
     expect(calculateReadiness(persisted)).toBe(57);
@@ -75,6 +90,9 @@ describe("companion hydration", () => {
     const setItem = vi.spyOn(window.localStorage, "setItem");
 
     render(<CompanionShell />);
+
+    expect(setItem).not.toHaveBeenCalled();
+
     await screen.findByText("57%");
     await waitFor(() => expect(setItem).toHaveBeenCalled());
 
