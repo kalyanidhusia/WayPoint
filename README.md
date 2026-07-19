@@ -12,6 +12,47 @@ Direct companion: [kalyanidhusia.github.io/WayPoint/companion](https://kalyanidh
 
 The flagship companion follows **Marcus Reed**, a clearly labeled synthetic Army 11B Sergeant in Little Rock with warehouse leadership experience and a Construction / Site Safety Coordinator target. Marcus, his stories, mentor requests, events, and application records are demonstration data.
 
+## Judge Pitch
+
+- **Repository:** [github.com/kalyanidhusia/WayPoint](https://github.com/kalyanidhusia/WayPoint)
+- **Deployed demo:** [kalyanidhusia.github.io/WayPoint](https://kalyanidhusia.github.io/WayPoint/)
+- **Direct companion:** [kalyanidhusia.github.io/WayPoint/companion](https://kalyanidhusia.github.io/WayPoint/companion/)
+- **Web slide deck:** [kalyanidhusia.github.io/WayPoint/pitch](https://kalyanidhusia.github.io/WayPoint/pitch/)
+- **Pitch source and speaker notes:** [`docs/judge-pitch.md`](docs/judge-pitch.md)
+
+### Two-minute presentation script
+
+Military professionals should not have to restart their identity or career when they transition. The problem is not a lack of capability. It is a translation gap between military experience and the language civilian careers expect.
+
+Our demonstration follows Marcus Reed, a synthetic Army 11B Sergeant in Little Rock moving toward construction and site safety. WayPoint stays with Marcus through six connected stages: Translate, Learn, Connect, Roadmap, Apply, and Interview.
+
+First, it turns Marcus’s Army and warehouse experience into evidence-backed safety-field language he can approve, edit, or reject. It starts with a transparent 35% planning-readiness baseline, then shows exactly how courses and completed actions move that indicator upward. It recommends clearly labeled synthetic veteran mentors, creates an eight-week roadmap, drafts truthful résumé and cover-letter content, and prepares interview STAR answers from confirmed stories only.
+
+WayPoint is not a job board, a one-click résumé generator, or a generic chatbot. It is an explainable transition companion. Every recommendation shows its reason and supporting evidence, while the member stays in control.
+
+Trust is part of the product: no DD-214 uploads, SSNs, classified information, fake applications, or fake mentor messages. Readiness is a planning indicator—not a hiring decision.
+
+The MVP is built with Next.js, TypeScript, a deterministic local domain agent, browser-local persistence, and automated tests and evaluations. Next, we can connect this trusted workflow to verified mentors, live courses, employers, a portable skills passport, and optional user-controlled document extraction.
+
+WayPoint turns military experience into an actionable civilian career path. Redeploy your skills. Not your life.
+
+### Feature checklist
+
+- [x] Six-stage career companion
+- [x] Evidence-backed military-to-civilian skill translation
+- [x] Approve, edit, and reject controls
+- [x] Transparent readiness planning indicator
+- [x] Curated learning and credential recommendations
+- [x] Clearly labeled synthetic veteran mentors
+- [x] Eight-week action roadmap
+- [x] Provenance-aware résumé and cover-letter drafts
+- [x] STAR preparation from confirmed stories only
+- [x] Browser-local progress and reset
+- [x] Responsive, keyboard-usable interface
+- [x] Unit tests and deterministic agent evals
+- [ ] Verified production mentor, course, and employer integrations
+- [ ] Secure, opt-in document extraction
+
 ## The problem
 
 Military-trained professionals often have deep leadership, logistics, healthcare, safety, training, and operations experience whose value is obscured by military terminology. Generic job matching can flatten that experience or recommend a narrow set of roles. WayPoint makes the translation visible and explainable while keeping the member in control.
