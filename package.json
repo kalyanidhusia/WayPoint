@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "pages:build": "PAGES_BASE_PATH=/WayPoint next build",
+    "pages:serve": "mkdir -p .pages-preview && ln -sfn ../out .pages-preview/WayPoint && serve .pages-preview",
+    "start": "serve out",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "vitest run --exclude '**/*evals.test.ts'",
@@ -20,11 +22,14 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "jsdom": "^29.1.1",
+    "serve": "^14.2.6",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^4.1.10"

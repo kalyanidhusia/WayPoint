@@ -12,7 +12,7 @@ import { RoadmapWorkspace } from "./roadmap-workspace";
 import { ApplyWorkspace } from "./apply-workspace";
 import { InterviewWorkspace } from "./interview-workspace";
 
-type CompanionContextValue = { state:CompanionState; setState:React.Dispatch<React.SetStateAction<CompanionState>>; toast:(message:string)=>void; };
+type CompanionContextValue = { state:CompanionState; setState:React.Dispatch<React.SetStateAction<CompanionState>>; hasHydrated:boolean; toast:(message:string)=>void; };
 const CompanionContext = createContext<CompanionContextValue | null>(null);
 export const useCompanion = () => { const value=useContext(CompanionContext); if(!value) throw new Error("Companion context missing"); return value; };
 const nav: Array<{id:Stage;label:string;icon:typeof Compass}> = [
@@ -21,12 +21,25 @@ const nav: Array<{id:Stage;label:string;icon:typeof Compass}> = [
 ];
 
 export function CompanionShell(){
-  const [state,setState]=useState<CompanionState>(()=>typeof window==="undefined"?createInitialState():loadState(window.localStorage));
+  const [state,setState]=useState<CompanionState>(createInitialState);
+  const [hasHydrated,setHasHydrated]=useState(false);
   const [toastText,setToastText]=useState("");
-  useEffect(()=>{ saveState(window.localStorage,state); },[state]);
+  useEffect(()=>{
+    let active = true;
+    queueMicrotask(() => {
+      if (!active) return;
+      setState(loadState(window.localStorage));
+      setHasHydrated(true);
+    });
+    return () => { active = false; };
+  },[]);
+  useEffect(()=>{
+    if (!hasHydrated) return;
+    saveState(window.localStorage,state);
+  },[hasHydrated,state]);
   const toast=(message:string)=>{setToastText(message);window.setTimeout(()=>setToastText(""),3500);};
   const view=useMemo(()=>({translate:<TranslateWorkspace/>,learn:<LearnWorkspace/>,connect:<ConnectWorkspace/>,roadmap:<RoadmapWorkspace/>,apply:<ApplyWorkspace/>,interview:<InterviewWorkspace/>})[state.activeStage],[state.activeStage]);
-  return <CompanionContext.Provider value={{state,setState,toast}}>
+  return <CompanionContext.Provider value={{state,setState,hasHydrated,toast}}>
     <div className="companion-app">
       <CompanionHeader/>
       <div className="companion-body">

@@ -4,6 +4,12 @@
 
 WayPoint is a military-to-civilian career-development and mentorship demonstration. It stays with a member through a six-stage career companion loop: **Translate → Learn → Connect → Roadmap → Apply → Interview**.
 
+Repository: [github.com/kalyanidhusia/WayPoint](https://github.com/kalyanidhusia/WayPoint)
+
+Deployed site: [kalyanidhusia.github.io/WayPoint](https://kalyanidhusia.github.io/WayPoint/)
+
+Direct companion: [kalyanidhusia.github.io/WayPoint/companion](https://kalyanidhusia.github.io/WayPoint/companion/)
+
 The flagship companion follows **Marcus Reed**, a clearly labeled synthetic Army 11B Sergeant in Little Rock with warehouse leadership experience and a Construction / Site Safety Coordinator target. Marcus, his stories, mentor requests, events, and application records are demonstration data.
 
 ## The problem
@@ -47,11 +53,11 @@ It is explicitly a planning indicator—not an employer score, eligibility decis
 - A **verified-open** record requires a direct official job URL, a manual verification date, and `verifiedOpen: true`.
 - A **synthetic-demo** role exists only to demonstrate workflow.
 
-WayPoint never submits an application. “Open official application” opens the employer’s official site, and an application is tracked only after the member confirms they submitted it there.
+WayPoint never submits an external application. Referral and application actions are simulated and recorded locally. “Open official application” opens the employer’s official site, and an application is tracked only after the member confirms they submitted it there.
 
 ## Mentor and STAR provenance
 
-All companion mentors visibly say “Synthetic demonstration mentor.” Intro and referral requests are stored locally; no message is delivered. Production requires verified mentor identity, messaging, availability, consent, and referral workflows.
+All companion mentors and demo member records are synthetic. Companion mentors visibly say “Synthetic demonstration mentor.” Intro and referral requests are stored locally; no message is delivered. Production requires verified mentor identity, messaging, availability, consent, and referral workflows.
 
 STAR answers use only a matching story marked user-confirmed. Unconfirmed synthetic prompts are never presented as Marcus’s real experience. When no confirmed story matches, WayPoint shows a blank worksheet.
 
@@ -75,11 +81,11 @@ The interface shows each analysis stage, evidence and confidence for every trans
 
 ## Attachments and privacy
 
-PDF, text, and image attachments remain in browser memory. Their name, type, and size are displayed, but automated extraction is not enabled and the agent never claims to have analyzed them. The demo uses no authentication, database, server upload, persistent storage, external API, or secrets. Do not enter classified, sensitive operational, medical, SSN, or DD-214 information.
+PDF, text, and image attachments remain in browser memory. Their name, type, and size are displayed, but document extraction is not enabled and the agent never claims to have analyzed them. The demo uses no authentication, database, server upload, external API, or secrets. Do not enter classified, sensitive operational, medical, SSN, or DD-214 information.
 
 Course, eligibility, mentor, occupation, story, and calendar content is synthetic demonstration data. Course and official career-page URLs are curated, but availability, pricing, jobs, and eligibility must be verified.
 
-Companion progress is stored under the schema-versioned key `waypoint-companion-v1` in `localStorage`. Stale versions fall back to a clean demo. “Reset WayPoint demo” deletes local progress and returns readiness to 35%. Attachments still remain browser-memory-only and are never added to local storage.
+Companion progress is stored in the browser under the schema-versioned key `waypoint-companion-v1` in `localStorage`. Stale or invalid versions fall back to a clean demo. “Reset WayPoint demo” deletes local progress and returns readiness to 35%. Attachments remain in browser memory only and are never added to local storage. The readiness score is a planning indicator, not an employer score, credential, eligibility decision, or hiring prediction.
 
 ## Run locally
 
@@ -92,7 +98,16 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Validate
+Local development does not use a base path. To build and serve the same repository-subpath export used by GitHub Pages:
+
+```bash
+npm run pages:build
+npm run pages:serve
+```
+
+Open the `/WayPoint/` path printed by the static server. The direct companion path is `/WayPoint/companion/`.
+
+## Test and evaluate
 
 ```bash
 npm run lint
@@ -102,17 +117,21 @@ npm run evals
 npm run build
 ```
 
-`npm run evals` runs the fixed Career Agent cases plus the complete companion journey and prints translation, course alignment, mentor explanation, roadmap, credential, application, STAR provenance, and readiness-bound summaries.
+`npm run test` runs unit and hydration regression tests. `npm run evals` runs the fixed Career Agent cases plus the complete companion journey and prints translation, course alignment, mentor explanation, roadmap, credential, application, STAR provenance, and readiness-bound summaries.
 
-## Five-minute demo script
+## Deployment architecture
 
-1. **0:00–0:40** — Open `/companion`; introduce synthetic member Marcus Reed, his safety target, 35% planning readiness, and persistent six-stage navigation.
-2. **0:40–1:30** — In Translate, review military and civilian evidence, edit a capability, approve the profile, and explain why this is a non-security pathway. Show that synthetic story prompts remain unconfirmed.
-3. **1:30–2:10** — In Learn, mark OSHA 30 in progress, clarify that it is Outreach Training rather than an OSHA certification, then complete one fundamentals course and watch readiness change.
-4. **2:10–2:45** — In Connect, request a synthetic mentor intro and demonstrate the specific-job/referral warning. Emphasize that requests are saved locally only.
-5. **2:45–3:25** — In Roadmap, complete tasks and add a note. Show current-week, progress, dependency, overdue, and readiness updates.
-6. **3:25–4:20** — In Apply, review training truthfulness in the generated résumé, tailor/copy the cover letter, open an official employer career page, and confirm an externally submitted application.
-7. **4:20–5:00** — In Interview, show the requirement breakdown, blank STAR worksheet, confirm a story in Translate, return to see a provenance-backed answer, and review the visibly synthetic Nabholz demo event.
+WayPoint uses the Next.js App Router and `output: "export"` to generate static files in `out/`. GitHub Actions builds with `PAGES_BASE_PATH=/WayPoint`, uploads the export as a Pages artifact, and deploys it through GitHub Pages. Next.js `Link` handles navigation under both localhost and the repository base path. There is no application server, API route, database, authentication service, server session, or runtime secret.
+
+Static hosting means WayPoint cannot run server-side document extraction, securely store uploaded files, send mentor messages, submit applications, authenticate users, or provide cross-device synchronization. External course and employer availability must be verified at the linked source. Browser storage is specific to the current browser and GitHub Pages origin.
+
+## Two-minute demonstration
+
+1. **0:00–0:25** — Open the companion and introduce synthetic member Marcus Reed, the construction-safety target, and the 35% planning indicator.
+2. **0:25–0:55** — Review evidence-backed translated capabilities and approve, edit, or reject one suggestion.
+3. **0:55–1:20** — Mark a demonstration course in progress, request a synthetic mentor introduction, and check a roadmap task.
+4. **1:20–1:45** — Review the synthetic résumé and employer watchlist; explain that WayPoint never submits an application.
+5. **1:45–2:00** — Show confirmed-story interview preparation, browser-local progress, and the reset control.
 
 ## Production roadmap
 

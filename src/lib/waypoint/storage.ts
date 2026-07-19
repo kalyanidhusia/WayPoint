@@ -1,5 +1,6 @@
 import { companionSkills, consultantNote, demoStories, safetySummary } from "./demo-member";
 import { initialEvents } from "./interview-data";
+import { companionStateSchema } from "./companion-schema";
 import type { CompanionState } from "./companion-types";
 export const STORAGE_KEY = "waypoint-companion-v1";
 export function createInitialState(): CompanionState {
@@ -8,7 +9,11 @@ export function createInitialState(): CompanionState {
     resumeText:"", resumeCompleted:false, coverLetterText:"", coverLetterCompleted:false, practiceCompleted:{}, events:structuredClone(initialEvents), lastReadinessAction:"Base experience validated" };
 }
 export function loadState(storage: Pick<Storage,"getItem">): CompanionState {
-  try { const parsed: unknown = JSON.parse(storage.getItem(STORAGE_KEY) ?? "null"); if (parsed && typeof parsed === "object" && "version" in parsed && parsed.version === 1) return parsed as CompanionState; } catch {}
+  try {
+    const parsed: unknown = JSON.parse(storage.getItem(STORAGE_KEY) ?? "null");
+    const result = companionStateSchema.safeParse(parsed);
+    if (result.success) return result.data;
+  } catch {}
   return createInitialState();
 }
 export function saveState(storage: Pick<Storage,"setItem">, state: CompanionState): void { storage.setItem(STORAGE_KEY, JSON.stringify(state)); }

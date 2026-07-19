@@ -1,5 +1,6 @@
 import { CareerExperience } from "@/components/career-experience";
 import { ArrowRight, Compass, GraduationCap, Route, Users } from "lucide-react";
+import Link from "next/link";
 
 const pillars = [
   { icon: Compass, step: "01", title: "Translate", text: "Turn service experience into civilian language—always with evidence you can review." },
@@ -15,7 +16,7 @@ export default function Home() {
         <a className="brand" href="#top" aria-label="WayPoint home"><span className="brand-mark">W</span><span>WayPoint</span></a>
         <nav aria-label="Primary navigation">
           <a href="#how">How it works</a><a href="#career-agent">Career Agent</a>
-          <a className="button small" href="/companion">Open companion <ArrowRight size={15} /></a>
+          <Link className="button small" href="/companion">Open companion <ArrowRight size={15} /></Link>
         </nav>
       </header>
 
@@ -25,7 +26,7 @@ export default function Home() {
           <h1>Your experience has<br /><em>more places to go.</em></h1>
           <p className="hero-lead">WayPoint translates military experience into civilian opportunity—then helps you build the skills, relationships, and plan to move forward with confidence.</p>
           <div className="hero-actions">
-            <a className="button" href="/companion">Meet Marcus · flagship demo <ArrowRight size={17} /></a>
+            <Link className="button" href="/companion">Meet Marcus · flagship demo <ArrowRight size={17} /></Link>
             <a className="text-link" href="#how">See how it works <span>↓</span></a>
           </div>
           <p className="privacy-line">Private by design · No account required · Your data stays in this browser</p>
@@ -56,7 +57,7 @@ export default function Home() {
         <h2>Meet your WayPoint Career Agent.</h2>
         <p>Choose a sample profile or tell us about your own experience. Every recommendation is explainable, editable, and yours to decide.</p>
       </section>
-      <section className="companion-cta"><div><p className="eyebrow light"><span /> New six-stage companion</p><h2>WayPoint stays for the whole journey.</h2><p>Follow Marcus Reed—a clearly labeled synthetic member—from translated experience through learning, mentorship, an eight-week roadmap, applications, and interview preparation.</p></div><a className="button" href="/companion">Open career companion <ArrowRight size={17}/></a></section>
+      <section className="companion-cta"><div><p className="eyebrow light"><span /> New six-stage companion</p><h2>WayPoint stays for the whole journey.</h2><p>Follow Marcus Reed—a clearly labeled synthetic member—from translated experience through learning, mentorship, an eight-week roadmap, applications, and interview preparation.</p></div><Link className="button" href="/companion">Open career companion <ArrowRight size={17}/></Link></section>
       <CareerExperience />
       <footer><a className="brand light-brand" href="#top"><span className="brand-mark">W</span><span>WayPoint</span></a><p>Redeploy your skills. Not your life.</p><span>Demonstration MVP · Synthetic data only</span></footer>
     </main>
