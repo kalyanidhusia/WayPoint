@@ -49,3 +49,23 @@
 [] Fogg (2009) — “A Behavior Model for Persuasive Design.” Persuasive. Fogg's model proposes that behavior occurs when motivation, ability, and a prompt converge. It's deliberately simple, but very useful when diagnosing product friction: “They want to learn but starting requires too much effort,” for example.
 
 [] Mathur et al. (2019) — “Dark Patterns at Scale: Findings from a Crawl of 11K Shopping Websites.” CSCW. Non-negotiable because we're deliberately studying persuasive design. The paper analyzes thousands of real-world interfaces and develops a taxonomy of manipulative design patterns. If WayPoint learns how to influence behavior, the team also needs to recognize when influence becomes coercion, deception, or exploitation.
+
+The first papers I would actually read are #1, #2, #5, #9, #10, #12, #18, #20, #22, and #25. That combination gives you motivation, reward, curiosity, memory, cognitive load, games, learner modeling, recommendation systems, and the ethical boundary.
+
+There is also a useful distinction I want us to keep throughout this research:
+
+TikTok's optimization problem
+
+$$ \text{Choose next item} \rightarrow \max P(\text{continued engagement}) $$
+
+WayPoint's optimization problem
+
+$$ \text{Choose next activity} \rightarrow \max\left( \text{learning gain} +\text{retention} +\text{motivation} +\text{skill progression} \right) $$
+
+subject to something like:
+
+$$ \text{cognitive load} \leq \text{manageable} $$ $$ \text{difficulty} \approx \text{current skill}+\epsilon $$ $$ \text{user agency and wellbeing} > \text{minimum acceptable threshold} $$
+
+That difference should eventually show up inside the recommendation objective itself, not just in our marketing language.
+
+And I would go one step further. As we read these papers, we should create a WayPoint Behavioral Design Bible. For every paper, extract: psychological mechanism → evidence → product mechanic → metric → potential abuse → WayPoint implementation. By paper 25 we'd have the beginnings of the actual behavioral architecture for the game/app, rather than 25 sets of notes sitting in a folder.
