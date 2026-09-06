@@ -1,11 +1,17 @@
 ## instructions
 
-[ ] Ryan & Deci (2000) — “Self-Determination Theory and the Facilitation of Intrinsic Motivation, Social Development, and Well-Being.” American Psychologist. This is foundational. Learn autonomy, competence, and relatedness. For WayPoint, the big question is how progression can make users want to become competent rather than merely chase points.
+[] Ryan & Deci (2000) — “Self-Determination Theory and the Facilitation of Intrinsic Motivation, Social Development, and Well-Being.” American Psychologist. This is foundational. Learn autonomy, competence, and relatedness. For WayPoint, the big question is how progression can make users want to become competent rather than merely chase points.
+
 [ ] Schultz, Dayan & Montague (1997) — “A Neural Substrate of Prediction and Reward.” Science. The classic reward-prediction-error paper. Essential for understanding anticipation, unexpected rewards, learning from outcomes, and why predictable rewards behave differently from surprising ones. Do not reduce this to the internet cliché “dopamine = addiction.” The actual mechanism is much more useful.
+
 [ ] Wood & Neal (2007) — “A New Look at Habits and the Habit–Goal Interface.” Psychological Review. Explains how behaviors move from deliberate actions toward cue-triggered habits. Directly relevant to turning “I should practice” into “this is just what I do after lunch/on the train/before bed.”
+
 [] Oulasvirta et al. (2012) — “Habits Make Smartphone Use More Pervasive.” Personal and Ubiquitous Computing. Extremely relevant to TikTok-style products. The researchers identify short, repetitive checking habits around dynamic smartphone content. Study this alongside Wood & Neal.
+
 [] Loewenstein (1994) — “The Psychology of Curiosity: A Review and Reinterpretation.” Psychological Bulletin. The famous information-gap account of curiosity: awareness of a gap between what you know and what you want to know creates motivation to close it. This is one of the scientific foundations for good hooks.
+
 [] Gollwitzer (1999) — “Implementation Intentions: Strong Effects of Simple Plans.” American Psychologist. The science behind “When X happens, I will do Y.” Useful for getting learning out of the app and into someone's real life: “After morning formation, spend five minutes reviewing X.”
+
 [] Kivetz, Urminsky & Zheng (2006) — “The Goal-Gradient Hypothesis Resurrected.” Journal of Marketing Research. People increase effort as they perceive themselves getting closer to a goal. This is the science you should understand before designing XP bars, skill levels, quests, course completion indicators, and near-mastery states.
 [] Berger & Milkman (2012) — “What Makes Online Content Viral?” Journal of Marketing Research. Examines which content characteristics are associated with sharing. Particularly useful for understanding emotional arousal, usefulness, interestingness, and why some ideas propagate while others die. Apply it to educational content hooks, not clickbait.
 [] Roediger & Karpicke (2006) — “Test-Enhanced Learning: Taking Memory Tests Improves Long-Term Retention.” Psychological Science. Probably one of the most important papers for WayPoint. Retrieving information improves later retention substantially compared with simply rereading it. Your feed therefore shouldn't just show information; it should constantly make people recall information.
